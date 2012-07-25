@@ -9,3 +9,19 @@ Version:        0.1.0
 */
 
 @import url("../twentyeleven/style.css");
+
+.page-template-page-alt-php .commentlist {
+	width: 100%; /* reset the width for the one-column and sidebar page layout */
+}
+	
+/* page-alt.php comments */
+/* Make sure we have room for our comment avatars */
+.page-template-page-alt-php .commentlist > li.comment,
+.page-template-page-alt-php.commentlist .pingback {
+	margin-left: 102px;
+	width: auto;
+}
+/* And a full-width comment form */
+.page-template-page-alt-php #respond {
+	width: auto;
+}
