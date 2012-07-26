@@ -10,7 +10,17 @@ register_sidebar( array(
 		'after_title' => '</h3>',
 	) );
 	
-	
+register_sidebar( array(
+		'name' => 'Footer area',
+		'id' => 'sidebar-footer',
+		'description' => 'The footer widget area',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+
 if ( ! function_exists( 'twentyeleven_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
