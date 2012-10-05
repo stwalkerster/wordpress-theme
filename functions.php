@@ -67,7 +67,7 @@ function twentyeleven_setup() {
 	register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
 
 	// Add support for a variety of post formats
-	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video' /*, 'chat'*//*, 'audio'*/ ) );
+	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery'/*, 'status'*/, 'quote', 'image', 'video' /*, 'chat'*//*, 'audio'*/ ) );
 
 	$theme_options = twentyeleven_get_theme_options();
 	if ( 'dark' == $theme_options['color_scheme'] )
