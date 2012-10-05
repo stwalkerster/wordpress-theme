@@ -130,43 +130,43 @@ function twentyeleven_setup() {
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
 		'disk' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Disque_dur_0007.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Disque_dur_0007.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Disque_dur_0007.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Disque_dur_0007.jpg',
 			'description' => 'Disk head'
 		),
 		'plasma' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Plasma-lamp.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Plasma-lamp.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Plasma-lamp.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Plasma-lamp.jpg',
 			'description' => 'Plasma lamp'
 		),
 		'lights' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Light_painting_gnangarra-1.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Light_painting_gnangarra-1.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Light_painting_gnangarra-1.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Light_painting_gnangarra-1.jpg',
 			'description' => 'Light painting'
 		),
 		'pencils' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Colouring_pencils.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Colouring_pencils.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Colouring_pencils.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Colouring_pencils.jpg',
 			'description' => 'Colouring pencils'
 		),
 		'sparkler' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Sparkler.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Sparkler.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Sparkler.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Sparkler.jpg',
 			'description' => 'Sparkler'
 		),
 		'balloon' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Cappadocia_Balloon_Inflating_Wikimedia_Commons.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Cappadocia_Balloon_Inflating_Wikimedia_Commons.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Cappadocia_Balloon_Inflating_Wikimedia_Commons.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Cappadocia_Balloon_Inflating_Wikimedia_Commons.jpg',
 			'description' => 'Hot air balloon'
 		),
 		'beach' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Lanzarote_3_Luc_Viatour.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Lanzarote_3_Luc_Viatour.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Lanzarote_3_Luc_Viatour.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Lanzarote_3_Luc_Viatour.jpg',
 			'description' => 'Lanzarote beach'
 		),
 		'lightning' => array(
-			'url' => '/wp-content/themes/stwalkerster/images/header/Blitze_IMGP6376_wp.jpg',
-			'thumbnail_url' => '/wp-content/themes/stwalkerster/images/header/thumbs/Blitze_IMGP6376_wp.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/Blitze_IMGP6376_wp.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Blitze_IMGP6376_wp.jpg',
 			'description' => 'Lightning'
 		),
 	) );
