@@ -11,6 +11,16 @@ register_sidebar( array(
 	) );
 	
 register_sidebar( array(
+		'name' => 'Events Crew Sidebar',
+		'id' => 'sidebar-eventscrew',
+		'description' => 'The sidebar for the events crew page template',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+register_sidebar( array(
 		'name' => 'Footer area',
 		'id' => 'sidebar-footer',
 		'description' => 'The footer widget area',
@@ -180,7 +190,7 @@ endif; // twentyeleven_setup
 add_filter('body_class', 'adjust_body_class', 20, 2);
 
 function adjust_body_class($wp_classes, $extra_classes) {
-	if( is_page_template('page-alt.php') ) {
+	if( is_page_template('page-alt.php') || is_page_template('page-eventscrew.php')) {
 		// Filter the body classes
 		foreach($wp_classes as $key => $value) {
 			if ($value == 'singular') {
