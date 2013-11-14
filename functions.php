@@ -169,6 +169,17 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Blitze_IMGP6376_wp.jpg',
 			'description' => 'Lightning'
 		),
+		
+		'openmic' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/openmic.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/openmic.jpg',
+			'description' => 'Open Mic'
+		),
+		'gb4' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/gb4.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/gb4.jpg',
+			'description' => 'GB4'
+		),
 	) );
 }
 endif; // twentyeleven_setup
