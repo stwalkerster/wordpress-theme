@@ -165,6 +165,11 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/gb4.jpg',
 			'description' => 'GB4'
 		),
+		'ingress' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/ingress.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/ingress.jpg',
+			'description' => 'Ingress Scanner'
+		),
 	) );
 }
 endif; // twentyeleven_setup
