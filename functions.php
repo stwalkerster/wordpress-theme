@@ -134,20 +134,10 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Disque_dur_0007.jpg',
 			'description' => 'Disk head'
 		),
-		'plasma' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Plasma-lamp.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Plasma-lamp.jpg',
-			'description' => 'Plasma lamp'
-		),
 		'lights' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/Light_painting_gnangarra-1.jpg',
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Light_painting_gnangarra-1.jpg',
 			'description' => 'Light painting'
-		),
-		'pencils' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Colouring_pencils.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Colouring_pencils.jpg',
-			'description' => 'Colouring pencils'
 		),
 		'sparkler' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/Sparkler.jpg',
@@ -163,11 +153,6 @@ function twentyeleven_setup() {
 			'url' => get_stylesheet_directory_uri() . '/images/header/Lanzarote_3_Luc_Viatour.jpg',
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Lanzarote_3_Luc_Viatour.jpg',
 			'description' => 'Lanzarote beach'
-		),
-		'lightning' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Blitze_IMGP6376_wp.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Blitze_IMGP6376_wp.jpg',
-			'description' => 'Lightning'
 		),
 		
 		'openmic' => array(
