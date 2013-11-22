@@ -155,8 +155,8 @@ function twentyeleven_setup() {
 			'description' => 'Sparkler'
 		),
 		'leapfrog' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrog.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrog.jpg',
+			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrog.JPG',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrog.JPG',
 			'description' => 'zero88 Leap Frog'
 		),
 		'beach' => array(
