@@ -154,10 +154,10 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Sparkler.jpg',
 			'description' => 'Sparkler'
 		),
-		'balloon' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Cappadocia_Balloon_Inflating_Wikimedia_Commons.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Cappadocia_Balloon_Inflating_Wikimedia_Commons.jpg',
-			'description' => 'Hot air balloon'
+		'leapfrog' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrog.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrog.jpg',
+			'description' => 'zero88 Leap Frog'
 		),
 		'beach' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/Lanzarote_3_Luc_Viatour.jpg',
