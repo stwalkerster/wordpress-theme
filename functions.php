@@ -139,10 +139,10 @@ function twentyeleven_setup() {
 
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
-		'disk' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Disque_dur_0007.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Disque_dur_0007.jpg',
-			'description' => 'Disk head'
+		'leapfrogscreen' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrogscreen.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrogscreen.jpg',
+			'description' => 'zero88 Leap Frog (screen)'
 		),
 		'lights' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/Light_painting_gnangarra-1.jpg',
