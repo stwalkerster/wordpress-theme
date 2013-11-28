@@ -149,22 +149,16 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Light_painting_gnangarra-1.jpg',
 			'description' => 'Light painting'
 		),
-		'sparkler' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Sparkler.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Sparkler.jpg',
-			'description' => 'Sparkler'
+		'edicastle' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/edicastle.JPG',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/edicastle.JPG',
+			'description' => 'Edinburgh Castle from Calton Hill'
 		),
 		'leapfrog' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrog.JPG',
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrog.JPG',
 			'description' => 'zero88 Leap Frog'
-		),
-		'beach' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Lanzarote_3_Luc_Viatour.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Lanzarote_3_Luc_Viatour.jpg',
-			'description' => 'Lanzarote beach'
-		),
-		
+		),		
 		'openmic' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/openmic.jpg',
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/openmic.jpg',
@@ -179,6 +173,11 @@ function twentyeleven_setup() {
 			'url' => get_stylesheet_directory_uri() . '/images/header/ingress.jpg',
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/ingress.jpg',
 			'description' => 'Ingress Scanner'
+		),
+		'edimound' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/edimound.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/edimound.jpg',
+			'description' => 'Edinburgh\'s Christmas from The Mound'
 		),
 	) );
 }
