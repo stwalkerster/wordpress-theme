@@ -144,11 +144,6 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrogscreen.jpg',
 			'description' => 'zero88 Leap Frog (screen)'
 		),
-		'lights' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/Light_painting_gnangarra-1.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/Light_painting_gnangarra-1.jpg',
-			'description' => 'Light painting'
-		),
 		'edicastle' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/edicastle.JPG',
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/edicastle.JPG',
