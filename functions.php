@@ -144,11 +144,11 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrogscreen.jpg',
 			'description' => 'zero88 Leap Frog (screen)'
 		),
-		'edicastle' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/edicastle.JPG',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/edicastle.JPG',
-			'description' => 'Edinburgh Castle from Calton Hill'
-		),
+#		'edicastle' => array(
+#			'url' => get_stylesheet_directory_uri() . '/images/header/christmas/edicastle.JPG',
+#			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/christmas/thumbs/edicastle.JPG',
+#			'description' => 'Edinburgh Castle from Calton Hill'
+#		),
 		'leapfrog' => array(
 			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrog.JPG',
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrog.JPG',
@@ -169,10 +169,11 @@ function twentyeleven_setup() {
 			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/ingress.jpg',
 			'description' => 'Ingress Scanner'
 		),
-		'edimound' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/edimound.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/edimound.jpg',
-			'description' => 'Edinburgh\'s Christmas from The Mound'
+#		'edimound' => array(
+#			'url' => get_stylesheet_directory_uri() . '/images/header/christmas/edimound.jpg',
+#			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/christmas/thumbs/edimound.jpg',
+#			'description' => 'Edinburgh\'s Christmas from The Mound'
+#		),
 		),
 	) );
 }
