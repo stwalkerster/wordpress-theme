@@ -174,6 +174,10 @@ function twentyeleven_setup() {
 #			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/christmas/thumbs/edimound.jpg',
 #			'description' => 'Edinburgh\'s Christmas from The Mound'
 #		),
+		'sunset' => array(
+			'url' => get_stylesheet_directory_uri() . '/images/header/sunset.jpg',
+			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/sunset.jpg',
+			'description' => 'Sunset over Edinburgh'
 		),
 	) );
 }
