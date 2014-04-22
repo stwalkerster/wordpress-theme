@@ -1,29 +1,30 @@
 /*
 Theme Name:     stwalkerster's theme
-Theme URI:      http://stwalkerster.co.uk/
+Theme URI:      https://stwalkerster.co.uk/
 Description:    Theme for stwalkerster's blog
 Author:         Simon Walker
-Author URI:     http://stwalkerster.co.uk/about/
-Template:       twentyeleven
+Author URI:     https://stwalkerster.co.uk/about/
+Template:       twentythirteen
 Version:        0.1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-@import url("../twentyeleven/style.css");
+@import url("../twentythirteen/style.css");
 
 .page-template-page-alt-php .commentlist {
-	width: 100%; /* reset the width for the one-column and sidebar page layout */
+	/*width: 100%;*/ /* reset the width for the one-column and sidebar page layout */
 }
 	
 /* page-alt.php comments */
 /* Make sure we have room for our comment avatars */
-.page-template-page-alt-php .commentlist > li.comment,
+/*.page-template-page-alt-php .commentlist > li.comment,
 .page-template-page-alt-php.commentlist .pingback {
 	margin-left: 102px;
 	width: auto;
-}
+}*/
 /* And a full-width comment form */
-.page-template-page-alt-php #respond {
+/*.page-template-page-alt-php #respond {
 	width: auto;
 }
+*/
