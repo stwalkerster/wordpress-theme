@@ -15,14 +15,7 @@
 			<?php get_sidebar( 'main' ); ?>
 
 			<div class="site-info">
-				<?php if( ! dynamic_sidebar ( "sidebar-footer" ) ) : ?>
-
-				<?php do_action( 'twentythirteen_credits' ); ?>
-				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentythirteen' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentythirteen' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?></a>
-				<?php else: ?>
-				<?php get_sidebar( 'footer' ); ?>
-				<?php endif; ?>
-
+				<p>Powered by <a href="//wordpress.org/">WordPress</a> | Theme based on <a href="//theme.wordpress.com/themes/twentythirteen/">Twenty Thirteen by the WordPress team</a> | All other content (except where specified) is Copyright &copy; 2014 Simon Walker</p>
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
