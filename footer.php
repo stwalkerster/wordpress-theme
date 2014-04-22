@@ -14,19 +14,13 @@
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<?php get_sidebar( 'main' ); ?>
 
-			<?php
-				/* A sidebar in the footer? Yep. You can can customize
-				 * your footer with three columns of widgets.
-				 */
-				if ( ! is_404() )
-					get_sidebar( 'footer' );
-			?>
-			
 			<div class="site-info">
 				<?php if( ! dynamic_sidebar ( "sidebar-footer" ) ) : ?>
 
 				<?php do_action( 'twentythirteen_credits' ); ?>
 				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentythirteen' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentythirteen' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?></a>
+				<?php else: ?>
+				<?php get_sidebar( 'footer' ); ?>
 				<?php endif; ?>
 
 			</div><!-- .site-info -->
