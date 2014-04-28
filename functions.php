@@ -201,3 +201,13 @@ function adjust_body_class($wp_classes, $extra_classes) {
 	// Add the extra classes back untouched
 	return array_merge($wp_classes, (array) $extra_classes );
 }
+
+function my_theme_custom_upload_mimes( $existing_mimes ) {
+	// add webm to the list of mime types
+	$existing_mimes['kml'] = 'application/vnd.google-earth.kml+xml';
+	$existing_mimes['kmz'] = 'application/vnd.google-earth.kmz';
+ 
+	// return the array back to the function with our added mime type
+	return $existing_mimes;
+}
+add_filter( 'mime_types', 'my_theme_custom_upload_mimes' );
