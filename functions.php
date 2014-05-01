@@ -21,6 +21,16 @@ register_sidebar( array(
 	) );
 	
 register_sidebar( array(
+		'name' => 'Ingress Sidebar',
+		'id' => 'sidebar-ingress',
+		'description' => 'The sidebar for the ingress page template',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+register_sidebar( array(
 		'name' => 'Footer area',
 		'id' => 'sidebar-footer',
 		'description' => 'The footer widget area',
@@ -189,7 +199,7 @@ endif; // twentyeleven_setup
 add_filter('body_class', 'adjust_body_class', 20, 2);
 
 function adjust_body_class($wp_classes, $extra_classes) {
-	if( is_page_template('page-alt.php') || is_page_template('page-eventscrew.php')) {
+	if( is_page_template('page-alt.php') || is_page_template('page-eventscrew.php') || is_page_template('page-ingress.php')) {
 		// Filter the body classes
 		foreach($wp_classes as $key => $value) {
 			if ($value == 'singular') {
@@ -201,3 +211,13 @@ function adjust_body_class($wp_classes, $extra_classes) {
 	// Add the extra classes back untouched
 	return array_merge($wp_classes, (array) $extra_classes );
 }
+
+function my_theme_custom_upload_mimes( $existing_mimes ) {
+	// add webm to the list of mime types
+	$existing_mimes['kml'] = 'application/vnd.google-earth.kml+xml';
+	$existing_mimes['kmz'] = 'application/vnd.google-earth.kmz';
+ 
+	// return the array back to the function with our added mime type
+	return $existing_mimes;
+}
+add_filter( 'mime_types', 'my_theme_custom_upload_mimes' );
