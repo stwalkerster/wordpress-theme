@@ -216,6 +216,7 @@ function my_theme_custom_upload_mimes( $existing_mimes ) {
 	// add webm to the list of mime types
 	$existing_mimes['kml'] = 'application/vnd.google-earth.kml+xml';
 	$existing_mimes['kmz'] = 'application/vnd.google-earth.kmz';
+	$existing_mimes['svg'] = 'image/svg+xml';
  
 	// return the array back to the function with our added mime type
 	return $existing_mimes;
