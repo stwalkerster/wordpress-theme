@@ -47,20 +47,17 @@
     </div>
 
 
-    <!-- Carousel
+    <!-- Header images
     ================================================== -->
-    <div id="myCarousel" class="carousel">
-      <!-- Indicators -->
+    <div class="carousel">
       <div class="carousel-inner">
         <div class="item active">
-          <img src="<?php bloginfo('template_url'); ?>/images/header/leapfrog.jpg" alt="First slide">
-          <!--<div class="container">
+          <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+          <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <p><?php bloginfo('description'); ?></p>
             </div>
-          </div>-->
+          </div>
         </div>
       </div>
     </div><!-- /.carousel -->
