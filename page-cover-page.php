@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,19 +9,14 @@
     <meta name="author" content="">
     <link rel="icon" href="<?php bloginfo('template_url'); ?>/blocks-16.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>Cover Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
     <!-- Custom styles for this template -->
     <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
+    <link href="<?php bloginfo('template_url'); ?>/cover.css" rel="stylesheet">
     
     <?php wp_head();
     
@@ -33,7 +29,22 @@
         }
     </style>
     <?php } ?>
+    
+    <style type="text/css" media="screen">
+        body {
+            background-image: url('<?php header_image(); ?>');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
+
   <body>
       <div class="navbar-wrapper">
       <div class="container">
@@ -60,20 +71,35 @@
 
       </div>
     </div>
+    
+    <div class="site-wrapper">
 
+      <div class="site-wrapper-inner">
 
-    <!-- Header images
-    ================================================== -->
-    <div class="carousel">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
-          <div class="container">
-            <div class="carousel-caption">
-              <p><?php bloginfo('description'); ?></p>
-            </div>
+        <div class="cover-container">
+        <?php the_post(); ?>
+
+          <div class="inner cover">
+            <h1 class="cover-heading"><?php the_title(); ?></h1>
+            <?php the_content(); ?>
           </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+                <p>&copy; 2014 Simon Walker. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+          </div>
+
         </div>
+
       </div>
-    </div><!-- /.carousel -->
-    <div class="container marketing"> <!-- this is closed in footer.php -->
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/js/bootstrap.min.js"></script>
+    <?php wp_footer(); ?>
+  </body>
+</html>
