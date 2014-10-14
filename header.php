@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?php bloginfo('template_url'); ?>/blocks-16.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title><?php wp_title("&raquo;", true, "RIGHT"); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css" rel="stylesheet">
