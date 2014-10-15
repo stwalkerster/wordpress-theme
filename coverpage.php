@@ -1,5 +1,8 @@
-
-<!DOCTYPE html>
+<?php
+/*
+    Template name: Cover Page
+*/
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -9,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?php bloginfo('template_url'); ?>/blocks-16.ico">
 
-    <title>Cover Template for Bootstrap</title>
+    <title><?php wp_title() ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -61,10 +64,9 @@
               <a class="navbar-brand" href="<?php echo get_option('home'); ?>"><?php bloginfo('name'); ?></a>
             </div>
             <?php wp_nav_menu( array( 
-                    'theme_location' => 'header-menu' ,
+                    'theme_location' => 'cover-menu' ,
                     'container_class' => 'navbar-collapse collapse',
-                    'menu_class' => 'nav navbar-nav',
-                    'walker' => new StwNavMenuWalker()
+                    'menu_class' => 'nav navbar-nav'
                     ) ); ?>
           </div>
         </div>

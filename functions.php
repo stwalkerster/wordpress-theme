@@ -8,6 +8,7 @@ function stw_register_menus() {
   register_nav_menus(
     array(
          'header-menu' => __( 'Header Menu' ),
+         'cover-menu' => __( 'Cover Page Menu' ),
         )
     );
 }
@@ -28,48 +29,48 @@ function custom_theme_features()  {
         
     add_theme_support('custom-header', $header_args );
     
-    	register_default_headers( array(
-		'leapfrogscreen' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrogscreen.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrogscreen.jpg',
-			'description' => 'zero88 Leap Frog (screen)'
-		),
-#		'edicastle' => array(
-#			'url' => get_stylesheet_directory_uri() . '/images/header/christmas/edicastle.JPG',
-#			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/christmas/thumbs/edicastle.JPG',
-#			'description' => 'Edinburgh Castle from Calton Hill'
-#		),
-		'leapfrog' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/leapfrog.JPG',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrog.JPG',
-			'description' => 'zero88 Leap Frog'
-		),		
-		'openmic' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/openmic.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/openmic.jpg',
-			'description' => 'Open Mic'
-		),
-		'gb4' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/gb4.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/gb4.jpg',
-			'description' => 'GB4'
-		),
-		'ingress' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/ingress.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/ingress.jpg',
-			'description' => 'Ingress Scanner'
-		),
-#		'edimound' => array(
-#			'url' => get_stylesheet_directory_uri() . '/images/header/christmas/edimound.jpg',
-#			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/christmas/thumbs/edimound.jpg',
-#			'description' => 'Edinburgh\'s Christmas from The Mound'
-#		),
-		'sunset' => array(
-			'url' => get_stylesheet_directory_uri() . '/images/header/sunset.jpg',
-			'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/sunset.jpg',
-			'description' => 'Sunset over Edinburgh'
-		),
-	) );
+        register_default_headers( array(
+        'leapfrogscreen' => array(
+            'url' => get_stylesheet_directory_uri() . '/images/header/leapfrogscreen.jpg',
+            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrogscreen.jpg',
+            'description' => 'zero88 Leap Frog (screen)'
+        ),
+#        'edicastle' => array(
+#            'url' => get_stylesheet_directory_uri() . '/images/header/christmas/edicastle.JPG',
+#            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/christmas/thumbs/edicastle.JPG',
+#            'description' => 'Edinburgh Castle from Calton Hill'
+#        ),
+        'leapfrog' => array(
+            'url' => get_stylesheet_directory_uri() . '/images/header/leapfrog.JPG',
+            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/leapfrog.JPG',
+            'description' => 'zero88 Leap Frog'
+        ),		
+        'openmic' => array(
+            'url' => get_stylesheet_directory_uri() . '/images/header/openmic.jpg',
+            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/openmic.jpg',
+            'description' => 'Open Mic'
+        ),
+        'gb4' => array(
+            'url' => get_stylesheet_directory_uri() . '/images/header/gb4.jpg',
+            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/gb4.jpg',
+            'description' => 'GB4'
+        ),
+        'ingress' => array(
+            'url' => get_stylesheet_directory_uri() . '/images/header/ingress.jpg',
+            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/ingress.jpg',
+            'description' => 'Ingress Scanner'
+        ),
+#        'edimound' => array(
+#            'url' => get_stylesheet_directory_uri() . '/images/header/christmas/edimound.jpg',
+#            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/christmas/thumbs/edimound.jpg',
+#            'description' => 'Edinburgh\'s Christmas from The Mound'
+#        ),
+        'sunset' => array(
+            'url' => get_stylesheet_directory_uri() . '/images/header/sunset.jpg',
+            'thumbnail_url' => get_stylesheet_directory_uri() . '/images/header/thumbs/sunset.jpg',
+            'description' => 'Sunset over Edinburgh'
+        ),
+    ) );
 }
 
 add_action( 'after_setup_theme', 'custom_theme_features' );
@@ -155,21 +156,24 @@ class StwNavMenuWalker extends Walker_Nav_Menu {
 
 //////////////
 
-function stw_posted_on() {
-	printf( __( '<a href="%1$s" title="%2$s" rel="bookmark"><time datetime="%3$s">%4$s</time></a> by <a href="%5$s" title="%6$s" rel="author">%7$s</a>', 'stwbootstrap' ),
-		esc_url( get_permalink() ),
-		esc_attr( get_the_time() ),
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		esc_attr( sprintf( __( 'View all posts by %s', 'stwbootstrap' ), get_the_author() ) ),
-		get_the_author()
-	);
+function stw_posted_on() 
+{
+    printf( __( '<a href="%1$s" title="%2$s" rel="bookmark"><time datetime="%3$s">%4$s</time></a> by <a href="%5$s" title="%6$s" rel="author">%7$s</a>', 'stwbootstrap' ),
+        esc_url( get_permalink() ),
+        esc_attr( get_the_time() ),
+        esc_attr( get_the_date( 'c' ) ),
+        esc_html( get_the_date() ),
+        esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+        esc_attr( sprintf( __( 'View all posts by %s', 'stwbootstrap' ), get_the_author() ) ),
+        get_the_author()
+    );
 }
 
-function stw_has_more_posts() {
+function stw_has_more_posts() 
+{
   global $wp_query;
   return $wp_query->current_post + 1 < $wp_query->post_count;
+}
 
 function stw_pager() 
 {
