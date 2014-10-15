@@ -15,6 +15,8 @@
                         echo '<hr />';
                     }
                 }
+                
+                stw_pager();
             }
             else
             {

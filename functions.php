@@ -170,4 +170,51 @@ function stw_posted_on() {
 function stw_has_more_posts() {
   global $wp_query;
   return $wp_query->current_post + 1 < $wp_query->post_count;
+
+function stw_pager() 
+{
+    global $wp_query;
+    $total = $wp_query->max_num_pages;
+    $big = 999999999; // need an unlikely integer
+    if( $total > 1 )
+    {
+        if( !$current_page = get_query_var('paged') )
+        {
+            $current_page = 1;
+        }
+        
+        if( get_option('permalink_structure') ) 
+        {
+            $format = 'page/%#%/';
+        } 
+        else 
+        {
+            $format = '&paged=%#%';
+        }
+        
+        $links = paginate_links(
+            array(
+                'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                'format'    => $format,
+                'current'   => max( 1, get_query_var('paged') ),
+                'total'     => $total,
+                'mid_size'  => 3,
+                'type'      => 'array',
+                'prev_text' => '&larr;',
+                'next_text' => '&rarr;',
+            )
+        );
+        echo "current page: " . $current_page;
+        echo '<div class="text-center"><ul class="pagination">';
+        
+        foreach($links as $l)
+        {            
+            echo '<li' 
+                . (strpos($l, "current") !== false ? ' class="active"' : '')
+                . '>' 
+                .  $l 
+                . '</li>';
+        }
+        echo '</ul></div>';
+    }
 }
