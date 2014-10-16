@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="<?php bloginfo('template_url'); ?>/blocks-16.ico">
+    <link rel="icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/blocks-16.ico">
 
     <title><?php wp_title("&raquo;", true, "RIGHT"); ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,7 +34,7 @@
     </style>
     <?php } ?>
   </head>
-  <body>
+  <body <?php body_class( ); ?>>
       <div class="navbar-wrapper">
       <div class="container">
 
@@ -47,7 +47,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="<?php echo get_option('home'); ?>"><?php bloginfo('name'); ?></a>
+              <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
             </div>
             <?php wp_nav_menu( array( 
                     'theme_location' => 'header-menu' ,

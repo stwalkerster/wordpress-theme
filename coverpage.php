@@ -3,23 +3,23 @@
     Template name: Cover Page
 */
 ?><!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="<?php bloginfo('template_url'); ?>/blocks-16.ico">
+    <link rel="icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/blocks-16.ico">
 
     <title><?php wp_title() ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
-    <link href="<?php bloginfo('template_url'); ?>/cover.css" rel="stylesheet">
+    <link href="<?php echo esc_url( get_template_directory_uri() ); ?>/cover.css" rel="stylesheet">
     
     <?php wp_head();
     
@@ -48,7 +48,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body <?php body_class( ); ?>>
       <div class="navbar-wrapper">
       <div class="container">
 
@@ -61,7 +61,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="<?php echo get_option('home'); ?>"><?php bloginfo('name'); ?></a>
+              <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
             </div>
             <?php wp_nav_menu( array( 
                     'theme_location' => 'cover-menu' ,
@@ -101,7 +101,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/bootstrap.min.js"></script>
     <?php wp_footer(); ?>
   </body>
 </html>
