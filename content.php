@@ -40,7 +40,11 @@
             $categories_list = get_the_category();
             if(is_array($categories_list)) {
                 foreach ( $categories_list as $category ) {
-                    $catList .= '<span class="label label-primary">' . $category->name . '</span> ';
+                    $catList .= '<a href="'
+                        . get_category_link( $category )
+                        . '"><span class="label label-primary">' 
+                        . $category->name 
+                        . '</span></a> ';
                 }
             }
         } 
