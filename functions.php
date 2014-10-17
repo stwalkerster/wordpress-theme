@@ -14,6 +14,27 @@ function stw_register_menus() {
 }
 add_action( 'init', 'stw_register_menus' );
 
+function stw_customize_register( $wp_customize ) {
+   //All our sections, settings, and controls will be added here
+   $wp_customize->add_setting( 'copyright-name' , array(
+        'default'     => 'Simon Walker',
+        'transport'   => 'refresh',
+    ) );    
+    
+    $wp_customize->add_section( 'stw_footer_customisation' , array(
+        'title'      => 'Footer customisation',
+        'priority'   => 30,
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'copyright-name', array(
+        'label'        => 'Copyright Name',
+        'section'    => 'stw_footer_customisation',
+        'settings'   => 'copyright-name',
+        'type' => 'text'
+    ) ) );
+}
+add_action( 'customize_register', 'stw_customize_register' );
+
 
 function custom_theme_features()  {
     $header_args = array(
