@@ -25,7 +25,7 @@
         </div><!-- /row meta -->
            
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 item-content">
                 <?php if ( is_search() ) : ?>
                     <?php the_excerpt(); ?>
                 <?php else : ?>

@@ -21,10 +21,33 @@ function stw_register_menus() {
 }
 add_action( 'init', 'stw_register_menus' );
 
+function stw_pride()
+{
+    if(get_theme_mod('pride'))
+    {
+    ?>
+         <style type="text/css">
+            .item-content p::selection:nth-child(6n+1) {background:rgba(255, 0, 0, 0.25);}
+            .item-content p::selection:nth-child(6n+2) {background:rgba(255, 127, 0, 0.25);}
+            .item-content p::selection:nth-child(6n+3) {background:rgba(255, 255, 0, 0.25);}
+            .item-content p::selection:nth-child(6n+4) {background:rgba(0, 255, 0, 0.25);}
+            .item-content p::selection:nth-child(6n+5) {background:rgba(0, 255, 255, 0.25);}
+            .item-content p::selection:nth-child(6n+6) {background:rgba(127, 0, 255, 0.25);}
+         </style>
+    <?php
+    }
+}
+add_action( 'wp_head', 'stw_pride');
+
 function stw_customize_register( $wp_customize ) {
    //All our sections, settings, and controls will be added here
    $wp_customize->add_setting( 'copyright-name' , array(
         'default'     => 'Simon Walker',
+        'transport'   => 'refresh',
+    ) );       
+    
+    $wp_customize->add_setting( 'pride' , array(
+        'default'     => false,
         'transport'   => 'refresh',
     ) );    
     
@@ -38,6 +61,13 @@ function stw_customize_register( $wp_customize ) {
         'section'    => 'stw_footer_customisation',
         'settings'   => 'copyright-name',
         'type' => 'text'
+    ) ) );
+    
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'pride', array(
+        'label'        => 'Fill with Pride',
+        'section'    => 'colors',
+        'settings'   => 'pride',
+        'type' => 'checkbox'
     ) ) );
 }
 add_action( 'customize_register', 'stw_customize_register' );
