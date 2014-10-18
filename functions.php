@@ -6,6 +6,10 @@
 
 add_theme_support( 'automatic-feed-links' );
 
+add_theme_support( 'infinite-scroll', array(
+    'container' => 'content',
+) );
+
 function stw_register_menus() {
   register_nav_menus(
     array(

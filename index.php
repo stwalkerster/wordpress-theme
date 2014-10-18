@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12" id="content">
         <?php 
             if ( have_posts() ) {
                 /* Start the Loop */
