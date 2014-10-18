@@ -49,11 +49,21 @@ function stw_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'pride' , array(
         'default'     => false,
         'transport'   => 'refresh',
+    ) );
+    
+    $wp_customize->add_setting( 'no-pin-sticky' , array(
+        'default'     => false,
+        'transport'   => 'refresh',
     ) );    
     
     $wp_customize->add_section( 'stw_footer_customisation' , array(
         'title'      => 'Footer customisation',
         'priority'   => 30,
+    ) );
+    
+    $wp_customize->add_section( 'stw_reading' , array(
+        'title'      => 'Reading',
+        'priority'   => 1000,
     ) );
     
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'copyright-name', array(
@@ -67,6 +77,13 @@ function stw_customize_register( $wp_customize ) {
         'label'        => 'Fill with Pride',
         'section'    => 'colors',
         'settings'   => 'pride',
+        'type' => 'checkbox'
+    ) ) );
+    
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'no-pin-sticky', array(
+        'label'        => 'Don\'t pin sticky posts to the top',
+        'section'    => 'stw_reading',
+        'settings'   => 'no-pin-sticky',
         'type' => 'checkbox'
     ) ) );
 }
