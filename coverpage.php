@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/blocks-16.ico">
 
     <title><?php wp_title() ?></title>
 
