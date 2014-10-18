@@ -19,7 +19,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
+    <link href="<?php bloginfo('stylesheet_url'); echo '?' . filemtime( get_stylesheet_directory() . '/style.css'); ?>" rel="stylesheet">
     
     <?php wp_head();
     
