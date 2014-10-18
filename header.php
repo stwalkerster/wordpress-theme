@@ -52,7 +52,8 @@
                     'theme_location' => 'header-menu' ,
                     'container_class' => 'navbar-collapse collapse',
                     'menu_class' => 'nav navbar-nav',
-                    'walker' => new StwNavMenuWalker()
+                    'walker' => new StwNavMenuWalker(),
+                    'fallback_cb' => 'stw_nav_fallback'
                     ) ); ?>
           </div>
         </div>

@@ -180,6 +180,11 @@ function stw_footer_nav_fallback()
     return "";
 }
 
+function stw_nav_fallback()
+{
+
+}
+
 function stw_pager() 
 {
     global $wp_query;

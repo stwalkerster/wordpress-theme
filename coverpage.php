@@ -65,7 +65,8 @@
             <?php wp_nav_menu( array( 
                     'theme_location' => 'cover-menu' ,
                     'container_class' => 'navbar-collapse collapse',
-                    'menu_class' => 'nav navbar-nav'
+                    'menu_class' => 'nav navbar-nav',
+                    'fallback_cb' => 'stw_nav_fallback'
                     ) ); ?>
           </div>
         </div>
