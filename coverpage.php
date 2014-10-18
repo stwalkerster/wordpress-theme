@@ -66,7 +66,8 @@
                     'theme_location' => 'cover-menu' ,
                     'container_class' => 'navbar-collapse collapse',
                     'menu_class' => 'nav navbar-nav',
-                    'fallback_cb' => 'stw_nav_fallback'
+                    'fallback_cb' => 'stw_nav_fallback',
+                    'walker' => new StwNavMenuWalker(),
                     ) ); ?>
           </div>
         </div>

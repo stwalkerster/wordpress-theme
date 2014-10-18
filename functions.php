@@ -177,12 +177,21 @@ function stw_has_more_posts()
 
 function stw_footer_nav_fallback()
 {
-    return "";
+    ?> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a><?php
 }
 
 function stw_nav_fallback()
 {
-
+    ?>
+    <div class="navbar-collapse collapse">
+        <ul id="menu-testing-menu" class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <?php
 }
 
 function stw_pager() 
