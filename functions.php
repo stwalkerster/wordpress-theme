@@ -281,3 +281,32 @@ function stw_breadcrumb() {
     elseif (is_search()) {echo"<li>Search Results"; echo'</li>';}
     echo '</ul>';
 }
+
+add_filter( 'img_caption_shortcode', 'stw_img_caption_shortcode', 10, 3 );
+
+function stw_img_caption_shortcode( $empty, $attr, $content ){
+	$attr = shortcode_atts( array(
+		'id'      => '',
+		'align'   => 'alignnone',
+		'width'   => '',
+		'caption' => ''
+	), $attr );
+
+	if ( 1 > (int) $attr['width'] || empty( $attr['caption'] ) ) {
+		return '';
+	}
+
+	if ( $attr['id'] ) {
+		$attr['id'] = 'id="' . esc_attr( $attr['id'] ) . '" ';
+	}
+
+	return '<div class="clearfix"></div><div ' . $attr['id']
+	. 'class="thumbnail ' . esc_attr( $attr['align'] ) . '" '
+	. 'style="max-width: ' . ( 10 + (int) $attr['width'] ) . 'px;">'
+	. do_shortcode( $content )
+	. '<div class="caption">' . $attr['caption'] . '</div>'
+	. '</div>';
+
+}
+
+

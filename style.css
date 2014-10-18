@@ -150,8 +150,6 @@ body {
   }
 }
 
-
-
 /* Submenus
 -------------------------------------------------- */
 
@@ -195,4 +193,56 @@ body {
     -webkit-border-radius:6px 0 6px 6px;
     -moz-border-radius:6px 0 6px 6px;
     border-radius:6px 0 6px 6px;
+}
+
+
+/* Image alignment
+-------------------------------------------------- */
+
+.aligncenter , .alignleft, .alignright {
+    float: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    max-width:100%;
+    height:auto;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .aligncenter {
+        float: center;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        max-width:100%;
+        height:auto;
+    }
+
+    .alignleft {
+        float: left;
+        margin-right: 2em;
+        margin-left: 0;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        max-width:100%;
+        height:auto;
+    }
+
+    .alignright { 
+        float: right;
+        margin-left: 2em;
+        margin-right: 0;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        max-width:100%;
+        height:auto;
+    }
+}
+
+.alignnone {
+    max-width:100%;
+    height:auto;
 }
