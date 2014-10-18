@@ -1,16 +1,6 @@
 <?php
 
-// add_theme_supports( 'post_formats', array() );
-
-// add_theme_support( 'post-thumbnails' ); 
-
-add_theme_support( 'automatic-feed-links' );
- add_theme_support( 'post-thumbnails' );
-add_theme_support( 'infinite-scroll', array(
-    'container' => 'content',
-) );
-
-function stw_register_menus() {
+function stw_init_hook() {
   register_nav_menus(
     array(
          'header-menu' => __( 'Header Menu' ),
@@ -19,7 +9,19 @@ function stw_register_menus() {
         )
     );
 }
-add_action( 'init', 'stw_register_menus' );
+
+function stw_after_setup_theme_hook()
+{
+    add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat') );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'infinite-scroll', array(
+        'container' => 'content',
+) );
+}
+
+add_action( 'init', 'stw_init_hook' );
+add_action( 'init', 'stw_after_setup_theme_hook' );
 
 function stw_pride()
 {
@@ -246,7 +248,7 @@ function stw_breadcrumb() {
     echo '<ol class="breadcrumb">';
     if (!is_home()) {
         echo '<li><a href="';
-        echo get_option('home');
+        echo home_url();
         echo '">';
         echo 'Home';
         echo '</a></li>';

@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-6">
                 <p class="post-meta muted">
-                    <?php stw_posted_on(); ?>
+                    <span title="Gallery" class="glyphicon glyphicon-th-large"></span> <?php stw_posted_on(); ?>
                 </p>
             </div>
             <div class="col-md-6">
