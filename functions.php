@@ -4,6 +4,8 @@
 
 // add_theme_support( 'post-thumbnails' ); 
 
+add_theme_support( 'automatic-feed-links' );
+
 function stw_register_menus() {
   register_nav_menus(
     array(
@@ -160,7 +162,6 @@ function stw_pager()
                 'next_text' => '&rarr;',
             )
         );
-        echo "current page: " . $current_page;
         echo '<div class="text-center"><ul class="pagination">';
         
         foreach($links as $l)
