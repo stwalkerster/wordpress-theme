@@ -88,7 +88,13 @@
 
           <div class="mastfoot">
             <div class="inner">
-                <p>&copy; 2014 Simon Walker. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+                <p>&copy; <?php echo date('Y') . ' ' . get_theme_mod('copyright-name'); ?> <?php wp_nav_menu( array( 
+                    'theme_location' => 'footer-links',
+                    'walker' => new StwFooterMenuWalker(),
+                    'container' => false,
+                    'items_wrap' => '%3$s',
+                    'fallback_cb' => 'stw_footer_nav_fallback'
+                    ) ); ?></p>
           </div>
 
         </div>

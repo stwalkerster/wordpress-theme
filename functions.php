@@ -9,6 +9,7 @@ function stw_register_menus() {
     array(
          'header-menu' => __( 'Header Menu' ),
          'cover-menu' => __( 'Cover Page Menu' ),
+         'footer-links' => __( 'Footer Links' ),
         )
     );
 }
@@ -99,6 +100,7 @@ add_action( 'after_setup_theme', 'custom_theme_features' );
 
 //////////////////////////////
 require_once('include/StwNavMenuWalker.php');
+require_once('include/StwFooterMenuWalker.php');
 //////////////
 
 function stw_posted_on() 
@@ -118,6 +120,11 @@ function stw_has_more_posts()
 {
   global $wp_query;
   return $wp_query->current_post + 1 < $wp_query->post_count;
+}
+
+function stw_footer_nav_fallback()
+{
+    return "";
 }
 
 function stw_pager() 
