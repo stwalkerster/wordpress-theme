@@ -1,6 +1,5 @@
 <?php get_header(); ?>
-    
-  <div class="row">
+<div class="row">
     <div class="col-sm-12" id="content">
         <?php 
             if ( have_posts() ) {
@@ -22,20 +21,26 @@
             {
             ?>
     
-            <article id="post-0" class="post no-results not-found">
-                <header class="entry-header">
-                    <h1 class="entry-title">Nothing was found!</h1>
-                </header><!-- .entry-header -->
-    
-                <div class="entry-content">
-                    <p>Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.</p>
-                    <?php get_search_form(); ?>
-                </div><!-- .entry-content -->
-            </article><!-- #post-0 -->
+                <div class="row">
+                    <div id="post-0" class="col-xs-12 post no-results not-found">
+                        <div class="page-header">
+                            <h1>
+                                Nothing was found!
+                            </h1>
+                        </div>
+                           
+                        <div class="row">
+                            <div class="col-xs-12 item-content">
+                                <p>Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.</p>
+                                <?php get_search_form(); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     
         <?php } ?>
 
     </div>
-  </div>
+</div>
 
 <?php get_footer(); ?>
