@@ -21,7 +21,8 @@
             </div>
             <div class="col-md-6">
                 <div class="pull-right">
-                <?php edit_post_link( 'Edit', '<div class="pull-right" style="margin: 0 1em">', '</div>' ); ?>
+                    <?php edit_post_link( 'Edit', '<div class="pull-right" style="margin: 0 1em">', '</div>' ); ?>
+                </div>
             </div>
         </div><!-- /row meta -->
              
