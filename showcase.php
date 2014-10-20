@@ -7,8 +7,10 @@ get_header();
 
 $pageQuery = new WP_Query( array(
     'post_type' => array( 'page' ),
-    'meta_key' => 'showcase-summary',
-    'posts_per_page' => 3
+    'meta_key' => 'use_in_showcase',
+    'meta_value' => '1',
+    'posts_per_page' => 3,
+    'orderby' => 'menu_order',
 ));
 if( $pageQuery->have_posts() )
 {
@@ -21,7 +23,7 @@ if( $pageQuery->have_posts() )
         <div class="col-lg-4">
             <?php the_post_thumbnail( array(140,140), array('class' => 'img-circle') ); ?>
             <h2><?php echo get_the_title() ?></h2>
-            <p><?php echo get_post_meta(get_the_ID(), 'showcase-summary', true); ?></p>
+            <p><?php the_excerpt() ?></p>
             <p><a class="btn btn-default" href="<?php the_permalink() ?>" role="button">Read more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <?php

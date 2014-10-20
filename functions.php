@@ -8,6 +8,8 @@ function stw_init_hook() {
          'footer-links' => __( 'Footer Links' ),
         )
     );
+    
+    add_post_type_support( 'page', 'excerpt' );
 }
 
 function stw_after_setup_theme_hook()
