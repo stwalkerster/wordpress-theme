@@ -22,6 +22,28 @@ function stw_after_setup_theme_hook()
 ) );
 }
 
+function stw_widgets_init() {
+
+	register_sidebar( array(
+		'name' => 'Home left sidebar',
+		'id' => 'home-left',
+		'before_widget' => '<div>',
+		'after_widget' => '</div>',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>',
+	) );	
+    
+    register_sidebar( array(
+		'name' => 'Home right sidebar',
+		'id' => 'home-right',
+		'before_widget' => '<div>',
+		'after_widget' => '</div>',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>',
+	) );
+}
+
+add_action( 'widgets_init', 'stw_widgets_init' );
 add_action( 'init', 'stw_init_hook' );
 add_action( 'init', 'stw_after_setup_theme_hook' );
 

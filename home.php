@@ -1,6 +1,11 @@
 <?php get_header(); ?>
 <div class="row">
-    <div class="col-sm-12" id="content">
+<?php if ( is_active_sidebar( 'home-left' ) ) : ?>
+	<div class="col-sm-3 widget-area">
+		<?php dynamic_sidebar( 'home-left' ); ?>
+	</div><!-- #primary-sidebar -->
+<?php endif; ?>
+    <div class="col-sm-<?php echo 12 - (is_active_sidebar( 'home-left' ) ? 3 : 0) - (is_active_sidebar( 'home-right' ) ? 3 : 0); ?>" id="content">
         <?php 
             $query = new WP_Query(array(
                 'post_type' => 'post',
@@ -51,6 +56,12 @@
         ?>
 
     </div>
+<?php if ( is_active_sidebar( 'home-right' ) ) : ?>
+	<div class="col-sm-3 widget-area">
+		<?php dynamic_sidebar( 'home-right' ); ?>
+	</div><!-- #primary-sidebar -->
+<?php endif; ?>
 </div>
 
 <?php get_footer(); ?>
+
