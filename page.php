@@ -6,7 +6,13 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12" id="content">
+    <?php if ( is_active_sidebar( 'page-left' ) ) : ?>
+        <div class="col-sm-3 widget-area">
+            <?php dynamic_sidebar( 'page-left' ); ?>
+        </div><!-- #primary-sidebar -->
+    <?php endif; ?>
+
+    <div class="col-sm-<?php echo 12 - (is_active_sidebar( 'page-left' ) ? 3 : 0) - (is_active_sidebar( 'page-right' ) ? 3 : 0); ?>" id="content">
         <?php 
             if ( have_posts() ) {
                 /* Start the Loop */
@@ -65,6 +71,11 @@
         <?php } ?>
 
     </div>
+    <?php if ( is_active_sidebar( 'page-right' ) ) : ?>
+        <div class="col-sm-3 widget-area">
+            <?php dynamic_sidebar( 'page-right' ); ?>
+        </div><!-- #primary-sidebar -->
+    <?php endif; ?>
 </div>
 
 <?php get_footer(); ?>
