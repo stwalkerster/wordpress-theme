@@ -58,6 +58,41 @@ function stw_widgets_init() {
 		'before_title' => '<h4>',
 		'after_title' => '</h4>',
 	) );
+    
+    register_sidebar( array(
+		'name' => 'Events Crew left sidebar',
+		'id' => 'eventscrew-left',
+		'before_widget' => '<div>',
+		'after_widget' => '</div>',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>',
+	) );	
+    
+    register_sidebar( array(
+		'name' => 'Events Crew right sidebar',
+		'id' => 'eventscrew-right',
+		'before_widget' => '<div>',
+		'after_widget' => '</div>',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>',
+	) );
+	register_sidebar( array(
+		'name' => 'Ingress left sidebar',
+		'id' => 'ingress-left',
+		'before_widget' => '<div>',
+		'after_widget' => '</div>',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>',
+	) );	
+    
+    register_sidebar( array(
+		'name' => 'Ingress right sidebar',
+		'id' => 'ingress-right',
+		'before_widget' => '<div>',
+		'after_widget' => '</div>',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>',
+	) );
 }
 
 add_action( 'widgets_init', 'stw_widgets_init' );
