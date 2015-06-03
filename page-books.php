@@ -18,13 +18,16 @@ get_header(); ?>
         <th>Series</th>
 </tr></thead><tbody>
 <?php
-
-$calibredata = new SimpleXMLElement(get_post_meta(get_the_ID(), 'calibre-data', true));
-foreach($calibredata as $record)
-{
-        echo '<tr><td>' . $record->title . '</td><td>' . $record->authors->author . '</td><td /></tr>';
+//ini_set('display_errors', 1);
+try {
+	$calibredata = new SimpleXMLElement(get_post_meta(get_the_ID(), 'calibre-data', true));
+	foreach($calibredata as $record)
+	{
+		echo '<tr><td>' . $record->title . '</td><td>' . $record->authors->author . '</td><td>' . $record->series . '</td></tr>';
+	}
+}catch(Exception $ex){
+	echo '<tr><th colspan="3">This list has no books.</th></tr>';
 }
-
 
 ?>
 </tbody></table></div>
