@@ -222,3 +222,26 @@ function my_theme_custom_upload_mimes( $existing_mimes ) {
 	return $existing_mimes;
 }
 add_filter( 'mime_types', 'my_theme_custom_upload_mimes' );
+
+global $stwalkerster_ed_variable_name;
+$stwalkerster_ed_variable_name = array (
+    'ed_current_location' => 'Current location',
+    'ed_distance_from_jaques' => 'Distance from Eol Prou RS-T d3-94',
+    'ed_incident_count' => 'Incident count',
+    'ed_jumps_made' => 'Jumps made so far',
+    'ed_jumps_remaining' => 'Jumps remaining (best case)',
+    'ed_madness' => 'Space madness',
+);
+
+function stw_ed_stat($name) {
+	$header = stw_get_ed($name);
+	$value = get_post_meta(get_the_ID(), $name, true);
+	
+	echo "<tr><td>$header</td><td>$value</td></tr>";
+}
+
+function stw_get_ed($name) {
+    global $stwalkerster_ed_variable_name;
+
+    return $stwalkerster_ed_variable_name[$name];
+}
