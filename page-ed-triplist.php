@@ -21,7 +21,7 @@ select
         '%D %b %Y'
     ) as departure
   , concat(coalesce(concat(t.departurestation, ',<br />'),''), sysfrom.name) as departure_location
-  , concat('<ul><li>', group_concat(sysv.name order by v.sequence asc separator '</li><li>'), '</li></ul>') as via
+  , concat('<ul><li style=\"font-size:smaller\">', group_concat(sysv.name order by v.sequence asc separator '</li><li>'), '</li></ul>') as via
   , concat(coalesce(concat(t.arrivalstation, ',<br />'),''), systo.name) as arrival_location
   , date_format(
         date_add(t.arrival, INTERVAL 1286 YEAR),

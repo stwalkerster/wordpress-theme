@@ -109,106 +109,26 @@ $techDelta = $wpdb->get_var($wpdb->prepare($incidentDeltaQuery, $tripId, 1));
 $jumpsMadeSql = "select coalesce(sum(jumpsmade),0) jumps from stwalkerster_ed_explore.session where trip = %d";
 $jumpsMade = $wpdb->get_var($wpdb->prepare($jumpsMadeSql, $tripId));
 
-$currentLocationSql = "
-SELECT
-  sys.name,
-  sys.x,
-  sys.y,
-  sys.z
-FROM stwalkerster_ed_explore.session s
-  LEFT JOIN stwalkerster_ed_explore.system sys ON sys.id = s.currentsystem
-WHERE s.trip = %d
-      AND s.id = (
-  SELECT max(sm.id)
-  FROM stwalkerster_ed_explore.session sm
-  WHERE sm.trip = s.trip
-)
-UNION ALL
-SELECT
-  sys.name,
-  sys.x,
-  sys.y,
-  sys.z
-FROM stwalkerster_ed_explore.trip t 
-  INNER JOIN stwalkerster_ed_explore.system sys ON sys.id = t.from
-WHERE t.id = %d
-";
-
-$lastLocationSql = "
-SELECT subq.name, subq.x, subq.y, subq.z
-FROM (
-SELECT
-  sys.name,
-  sys.x,
-  sys.y,
-  sys.z
-FROM stwalkerster_ed_explore.session s
-  LEFT JOIN stwalkerster_ed_explore.system sys ON sys.id = s.currentsystem
-WHERE s.trip = %d
-      AND s.id < (
-  SELECT max(sm.id)
-  FROM stwalkerster_ed_explore.session sm
-  WHERE sm.trip = s.trip
-)
-order by s.id DESC
-limit 1 ) subq
-UNION ALL
-SELECT
-  sys.name,
-  sys.x,
-  sys.y,
-  sys.z
-FROM stwalkerster_ed_explore.session s
-  LEFT JOIN stwalkerster_ed_explore.system sys ON sys.id = s.currentsystem
-WHERE s.trip = %d
-      AND s.id = (
-  SELECT max(sm.id)
-  FROM stwalkerster_ed_explore.session sm
-  WHERE sm.trip = s.trip
-)
-UNION ALL
-SELECT
-  sys.name,
-  sys.x,
-  sys.y,
-  sys.z
-FROM stwalkerster_ed_explore.trip t 
-  INNER JOIN stwalkerster_ed_explore.system sys ON sys.id = t.from
-WHERE t.id = %d
-";
-
-$currentLocation = $wpdb->get_row($wpdb->prepare($currentLocationSql, $tripId, $tripId));
-$lastLocation = $wpdb->get_row($wpdb->prepare($lastLocationSql, $tripId, $tripId, $tripId));
+$currentLocationSql = "SELECT s.name, s.cx x, s.cy y, s.cz z FROM stwalkerster_ed_explore.vw_currentposition s WHERE s.trip = %d";
+$currentLocation = $wpdb->get_row($wpdb->prepare($currentLocationSql, $tripId));
 
 $viasSql = "
-SELECT
-  sys.name,
-  sys.x,
-  sys.y,
-  sys.z
-FROM (
-       SELECT
-         1 AS rgroup,
-         system,
-         number,
-         trip
-       FROM stwalkerster_ed_explore.waypoint
-       WHERE trip = %d and special = 'v'
-       UNION ALL
-       SELECT
-         2,
-         w.system,
-         0,
-         t.id
-       FROM stwalkerster_ed_explore.trip t
-	   INNER JOIN stwalkerster_ed_explore.waypoint w on t.to = w.system and w.special = 'a' and w.trip = t.id
-       WHERE t.id = %d
-     ) wp
-  INNER JOIN stwalkerster_ed_explore.system sys ON sys.id = wp.system
-ORDER BY wp.rgroup, wp.number
+select next.name,
+  round(case
+    when 1=2 then null
+    when next.reached = 1 then 0
+    when curr.reached = 1 then sqrt(power(next.x - currpos.cx, 2) + power(next.y - currpos.cy, 2) + power(next.z - currpos.cz, 2))
+    else sqrt(power(next.x - curr.x, 2) + power(next.y - curr.y, 2) + power(next.z - curr.z, 2))
+  end, 2) as dist,
+  round(sqrt(power(next.x - curr.x, 2) + power(next.y - curr.y, 2) + power(next.z - curr.z, 2)), 2) as origdist
+from vw_vias curr
+inner join vw_vias next on next.number = (curr.number + 100) and next.trip = curr.trip
+left join vw_currentposition currpos on currpos.trip = curr.trip
+where curr.trip = %d
+order by next.number
 ";
 
-$vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId, $tripId), OBJECT);
+$vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId), OBJECT);
 
 ?>
 <h2>Route Plan</h2>
@@ -238,7 +158,7 @@ $vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId, $tripId), OBJECT);
 <table>
 	<thead>
 		<tr>
-			<th/>
+			<th></th>
 			<th>Total</th>
 		</tr>
 	</thead>
@@ -247,21 +167,18 @@ $vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId, $tripId), OBJECT);
 			<td>Current Location</td>
 			<td colspan="2"><?= $currentLocation->name ?></td>
 		</tr>
-		<?php $lastWp = $currentLocation; $bestCaseJumps = 0; ?>
+		<?php $bestCaseJumps = 0; ?>
 		<?php foreach($vias as $v) : ?>
 		<tr>
 			<td>Distance from <?= $v->name ?></td>
 			<td><?php
-				$dX = $v->x - $lastWp->x;
-				$dY = $v->y - $lastWp->y;
-				$dZ = $v->z - $lastWp->z;
-				$dist = sqrt(pow($dX,2)+pow($dY,2)+pow($dZ,2));
-				$bestCaseJumps += ceil($dist / $jumpRange);
-				
-				echo round($dist, 2) . " ly";
+                $bestCaseJumps += ceil($v->dist / $jumpRange);
+				echo round($v->dist, 2) . " ly";
+				if($v->origdist != $v->dist) {
+                    echo ' <span style="color: #bbbbbb; font-size:x-small">(' . $v->origdist . ' ly</span>';
+                }
 			?></td>
 		</tr>
-		<?php $lastWp = $v; ?>
 		<?php endforeach; ?>
 		<tr>
 			<td>Jumps made</td>
