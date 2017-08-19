@@ -245,3 +245,14 @@ function stw_get_ed($name) {
 
     return $stwalkerster_ed_variable_name[$name];
 }
+
+add_image_size('full-width', 1000, 288, true);
+
+add_filter( 'image_size_names_choose', 'stw_custom_sizes' );
+
+function stw_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'stw-full-width' => __( 'Full-page width' ),
+    ) );
+}
+

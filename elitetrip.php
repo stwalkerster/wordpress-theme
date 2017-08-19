@@ -8,9 +8,10 @@ select
     1 as ordergroup
   , 0 as ordergroup2
   , 'Departure' as stage
-  , concat(coalesce(concat(t.departurestation, ', '),''), s.name) as system
+  , s.name as system
   , null as source
   , 0 as reached
+  , t.departurestation as waypointnotes
 from stwalkerster_ed_explore.trip t
   inner join stwalkerster_ed_explore.system s on s.id = t.`from`
 where t.id = %d
@@ -19,12 +20,14 @@ select
     3 as ordergroup
   , 0 as ordergroup2
   , 'Arrival' as stage
-  , concat(coalesce(concat(t.arrivalstation, ', '),''), s.name) as system
-  , null as source
+  , s.name as system
+  , concat('CMDR ', c.name) as source
   , w.reached as reached
+  , t.arrivalstation as waypointnotes
 from stwalkerster_ed_explore.trip t
   inner join stwalkerster_ed_explore.waypoint w on w.id = t.to and w.special = 'a'
   inner join stwalkerster_ed_explore.system s on s.id = w.system
+  left join stwalkerster_ed_explore.commander c on c.id = w.commander
 where t.id = %d
 union all
 select
@@ -32,16 +35,18 @@ select
   , w.sequence as ordergroup2
   , case w.special
 		when 'v' then concat('Via ', w.number)
+        when 'n' then concat('Neutron Waypoint ', w.number)
 		else concat('Waypoint ', w.number)
 	end as stage
   , coalesce(s.name, '<i>Unplotted</i>') as system
   , concat('CMDR ', c.name) as source
   , w.reached as reached
+  , w.notes as waypointnotes
 from stwalkerster_ed_explore.waypoint w
   left join stwalkerster_ed_explore.system s on s.id = w.system
   left join stwalkerster_ed_explore.commander c on c.id = w.commander
 where w.trip = %d
-  and coalesce(w.special, 'v') = 'v' 
+  and coalesce(w.special, 'v') in ('v', 'n')
 order by ordergroup, ordergroup2;
 ", $tripId, $tripId, $tripId), ARRAY_A);
 
@@ -64,9 +69,8 @@ left join (
     SELECT si.type, si.delta
     FROM stwalkerster_ed_explore.incident si
     WHERE si.session = (
-      SELECT max(mi.session)
-      FROM stwalkerster_ed_explore.incident mi
-        INNER JOIN stwalkerster_ed_explore.session ms ON mi.session = ms.id
+      SELECT max(ms.id)
+      FROM stwalkerster_ed_explore.session ms
       WHERE ms.trip = %d)
     ) delta on delta.type = it.id
 where it.technical = %d
@@ -87,9 +91,8 @@ SELECT coalesce(sum(si.delta), 0)
 FROM stwalkerster_ed_explore.incident si
   INNER JOIN stwalkerster_ed_explore.incidenttype it on si.type = it.id
 WHERE si.session = (
-  SELECT max(mi.session)
-  FROM stwalkerster_ed_explore.incident mi
-    INNER JOIN stwalkerster_ed_explore.session ms ON mi.session = ms.id
+  SELECT max(ms.id)
+  FROM stwalkerster_ed_explore.session ms
   WHERE ms.trip = %d)
 AND it.technical = %d
 ";
@@ -198,7 +201,7 @@ FROM (
          0,
          t.id
        FROM stwalkerster_ed_explore.trip t
-	   INNER JOIN stwalkerster_ed_explore.waypoint w on t.to = w.id
+	   INNER JOIN stwalkerster_ed_explore.waypoint w on t.to = w.system and w.special = 'a' and w.trip = t.id
        WHERE t.id = %d
      ) wp
   INNER JOIN stwalkerster_ed_explore.system sys ON sys.id = wp.system
@@ -220,10 +223,13 @@ $vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId, $tripId), OBJECT);
 	<tbody>
 <?php foreach($waypointData as $waypoint) : ?>
 		<tr>
-			<td><?php if($waypoint['reached']) echo '<del>' . $waypoint['stage'] . '</del>'; else echo $waypoint['stage']; ?></td>
+			<td<?php if($waypoint['waypointnotes'] !== null) echo ' rowspan="2"'; ?>><?php if($waypoint['reached']) echo '<del>' . $waypoint['stage'] . '</del>'; else echo $waypoint['stage']; ?></td>
 			<td><?php if($waypoint['reached']) echo '<del>' . $waypoint['system'] . '</del>'; else echo $waypoint['system']; ?></td>
-			<td><?php if($waypoint['reached']) echo '<del>' . $waypoint['source'] . '</del>'; else echo $waypoint['source']; ?></td>
+			<td style="color: #bbbbbb; font-size:smaller;"><?php if($waypoint['reached']) echo '<del>' . $waypoint['source'] . '</del>'; else echo $waypoint['source']; ?></td>
 		</tr>
+        <?php if($waypoint['waypointnotes'] !== null) : ?>
+            <tr><td colspan="2" style="border-top:none;padding-top: 0;font-weight: bold;"><?= $waypoint['waypointnotes'] ?></td></tr>
+        <?php endif; ?>
 <?php endforeach; ?>
 	</tbody>
 </table>
@@ -263,7 +269,7 @@ $vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId, $tripId), OBJECT);
 		</tr>
 		<tr>
 			<td>Jump range</td>
-			<td><?= $jumpRange ?> ly</td>
+			<td><?= round($jumpRange, 2) ?> ly</td>
 		</tr>
 		<tr>
 			<td>Best case jumps remaining</td>
@@ -277,8 +283,8 @@ $vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId, $tripId), OBJECT);
 	<thead>
 		<tr>
 			<th rowspan="2">Type</th>
-			<th>Σ</th>
-			<th>Δ</th>
+			<th><abbr title="Total this trip">Σ</abbr></th>
+			<th><abbr title="Last session">Δ</abbr></th>
 		</tr>
 		<tr>
 			<td><?= $nontechSum ?></td>
@@ -300,8 +306,8 @@ $vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId, $tripId), OBJECT);
 	<thead>
 		<tr>
 			<th rowspan="2">Type</th>
-			<th>Σ</th>
-			<th>Δ</th>
+			<th><abbr title="Total this trip">Σ</abbr></th>
+			<th><abbr title="Last session">Δ</abbr></th>
 		</tr>
 		<tr>
 			<td><?= $techSum ?></td>

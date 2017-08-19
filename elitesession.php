@@ -39,6 +39,7 @@ from stwalkerster_ed_explore.waypoint w
 where w.sequence >= nwp.sequence
   and w.special in ('v','a')
   and s.id = %d
+order by w.sequence
 ";
 
 $incidentsSql = "
@@ -64,7 +65,18 @@ $techIncidents = $wpdb->get_results($wpdb->prepare($incidentsSql, $sessionId, 1)
 		</tr>
 		<tr>
 			<td>Next waypoint</td>
-			<td><?= $basicInfo->next_waypoint ?></td>
+			<td><?= $basicInfo->next_waypoint ?> <?php
+                if($basicInfo->next_x === null || $basicInfo->curr_x === null) {
+                } else {
+                    $dX = $basicInfo->next_x - $basicInfo->curr_x;
+                    $dY = $basicInfo->next_y - $basicInfo->curr_y;
+                    $dZ = $basicInfo->next_z - $basicInfo->curr_z;
+                    $dist = sqrt(pow($dX,2)+pow($dY,2)+pow($dZ,2));
+                    $bestCaseJumps += ceil($dist / $basicInfo->jumprange);
+
+                    echo "<small>(" . round($dist, 2) . " ly, " . $bestCaseJumps . "bcj)</small>";
+                }
+?></td>
 		</tr>
 		<?php 
 			$lastWp = new stdClass;
@@ -86,9 +98,9 @@ $techIncidents = $wpdb->get_results($wpdb->prepare($incidentsSql, $sessionId, 1)
 					$dY = $v->y - $lastWp->y;
 					$dZ = $v->z - $lastWp->z;
 					$dist = sqrt(pow($dX,2)+pow($dY,2)+pow($dZ,2));
-					$bestCaseJumps += ceil($dist / $basicInfo->jumprange);
-					
-					echo round($dist, 2) . " ly";	
+					$thisBCJ = ceil($dist / $basicInfo->jumprange);
+					$bestCaseJumps += $thisBCJ;
+					echo round($dist, 2) . " ly <small>(" . $thisBCJ . " bcj)</small>";
 				}
 			?></td>
 		</tr>
