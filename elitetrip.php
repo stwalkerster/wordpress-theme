@@ -175,7 +175,7 @@ $vias = $wpdb->get_results($wpdb->prepare($viasSql, $tripId), OBJECT);
                 $bestCaseJumps += ceil($v->dist / $jumpRange);
 				echo round($v->dist, 2) . " ly";
 				if($v->origdist != $v->dist) {
-                    echo 'remaining <span style="color: #bbbbbb; font-size:x-small">(' . $v->origdist . ' ly)</span>';
+                    echo ' remaining <span style="color: #bbbbbb; font-size:x-small">(' . $v->origdist . ' ly)</span>';
                 }
 			?></td>
 		</tr>
