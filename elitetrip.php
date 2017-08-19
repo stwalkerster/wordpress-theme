@@ -121,9 +121,9 @@ select next.name,
     else sqrt(power(next.x - curr.x, 2) + power(next.y - curr.y, 2) + power(next.z - curr.z, 2))
   end, 2) as dist,
   round(sqrt(power(next.x - curr.x, 2) + power(next.y - curr.y, 2) + power(next.z - curr.z, 2)), 2) as origdist
-from vw_vias curr
-inner join vw_vias next on next.number = (curr.number + 100) and next.trip = curr.trip
-left join vw_currentposition currpos on currpos.trip = curr.trip
+from stwalkerster_ed_explore.vw_vias curr
+inner join stwalkerster_ed_explore.vw_vias next on next.number = (curr.number + 100) and next.trip = curr.trip
+left join stwalkerster_ed_explore.vw_currentposition currpos on currpos.trip = curr.trip
 where curr.trip = %d
 order by next.number
 ";
