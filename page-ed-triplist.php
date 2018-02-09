@@ -21,7 +21,7 @@ select
         '%D %b %Y'
     ) as departure
   , concat(coalesce(concat(t.departurestation, ',<br />'),''), sysfrom.name) as departure_location
-  , concat('<ul><li style=\"font-size:smaller\">', group_concat(sysv.name order by v.sequence asc separator '</li><li>'), '</li></ul>') as via
+  , concat('<ul><li style=\"font-size:smaller\">', group_concat(sysv.name order by v.sequence asc separator '</li><li style=\"font-size:smaller\">'), '</li></ul>') as via
   , concat(coalesce(concat(t.arrivalstation, ',<br />'),''), systo.name) as arrival_location
   , date_format(
         date_add(t.arrival, INTERVAL 1286 YEAR),
@@ -47,19 +47,22 @@ order by coalesce(t.departure, '9999-12-31');
                                 <th>Via</th>
                                 <th>Arrival location</th>
                                 <th>Arrival date</th>
-                                <th>Tracking page</th>
                                 <th>Posts</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($tripData as $trip): ?>
                             <tr>
+                                <td colspan="6">
+                                    <h2 class="triptitle"><?php echo $trip['linkpage'] ?></h2>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><?php echo $trip['departure'] ?></td>
                                 <td><?php echo $trip['departure_location'] ?></td>
                                 <td><?php echo $trip['via'] ?></td>
                                 <td><?php echo $trip['arrival_location'] ?></td>
                                 <td><?php echo $trip['arrival'] ?></td>
-                                <td><?php echo $trip['linkpage'] ?></td>
                                 <td><?php echo $trip['linktag'] ?></td>
                             </tr>
                             <?php endforeach; ?>
